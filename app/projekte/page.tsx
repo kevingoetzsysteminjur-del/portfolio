@@ -1,3 +1,5 @@
+"use client";
+
 const projects = [
   {
     title: "Portfolio Website",
@@ -9,6 +11,24 @@ const projects = [
     glow: "rgba(139,92,246,0.28)",
     border: "rgba(139,92,246,0.18)",
     href: "/",
+  },
+  {
+    title: "Bella Vista – Ristorante & Café",
+    description:
+      "Restaurant-Website für ein fiktives italienisches Restaurant in Heidelberg. Dunkles, elegantes Design mit goldenen Akzenten und vollständiger Seitenstruktur.",
+    features: [
+      "Fullscreen Hero mit Gradient & Scroll-Indikator",
+      "Speisekarten-Vorschau mit Preisen",
+      "Highlights-Sektion mit Hover-Effekten",
+      "Reservierungs-Banner & Footer mit Öffnungszeiten",
+    ],
+    tags: ["Next.js", "Tailwind CSS", "shadcn/ui"],
+    status: "live",
+    accent: "#fbbf24",
+    glow: "rgba(251,191,36,0.22)",
+    border: "rgba(251,191,36,0.18)",
+    href: "https://restaurant-bella-vista-sable.vercel.app/",
+    demoLabel: "Live Demo",
   },
   {
     title: "Fullstack-App",
@@ -139,6 +159,24 @@ export default function ProjektePage() {
               {project.description}
             </p>
 
+            {/* Feature-Liste (optional) */}
+            {"features" in project && project.features && (
+              <ul className="flex flex-col gap-1.5">
+                {(project.features as string[]).map((f) => (
+                  <li
+                    key={f}
+                    className="text-xs flex items-start gap-2"
+                    style={{ color: "rgba(148,163,184,0.6)" }}
+                  >
+                    <span style={{ color: project.accent }} className="mt-0.5 shrink-0">
+                      ✦
+                    </span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            )}
+
             {/* Tags + Link */}
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div className="flex flex-wrap gap-2">
@@ -158,16 +196,37 @@ export default function ProjektePage() {
               </div>
 
               {project.href && (
-                <a
-                  href={project.href}
-                  className="text-xs font-medium transition-opacity hover:opacity-100"
-                  style={{
-                    color: project.accent,
-                    opacity: 0.7,
-                  }}
-                >
-                  Ansehen →
-                </a>
+                "demoLabel" in project && project.demoLabel ? (
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold px-4 py-1.5 rounded-full transition-all"
+                    style={{
+                      background: `rgba(251,191,36,0.12)`,
+                      color: project.accent,
+                      border: `1px solid rgba(251,191,36,0.3)`,
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.background =
+                        "rgba(251,191,36,0.22)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.background =
+                        "rgba(251,191,36,0.12)";
+                    }}
+                  >
+                    {String(project.demoLabel)} →
+                  </a>
+                ) : (
+                  <a
+                    href={project.href}
+                    className="text-xs font-medium transition-opacity hover:opacity-100"
+                    style={{ color: project.accent, opacity: 0.7 }}
+                  >
+                    Ansehen →
+                  </a>
+                )
               )}
             </div>
 
