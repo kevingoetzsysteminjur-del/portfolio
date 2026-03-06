@@ -31,6 +31,25 @@ const projects = [
     demoLabel: "Live Demo",
   },
   {
+    title: "IRONPEAK Fitness Studio",
+    description:
+      "Premium-Website für ein modernes Fitness-Studio. Dunkles, kraftvolles Design mit orangen Akzenten – gebaut um Mitglieder zu gewinnen und Stärke auszustrahlen.",
+    features: [
+      "Fullscreen Hero mit animiertem Slogan & Call-to-Action",
+      "Kursplan-Übersicht mit Kategorien & Filterfunktion",
+      "Mitgliedschafts-Pakete mit Preis-Vergleich",
+      "Trainer-Team Sektion mit Profilkarten",
+      "Kontaktformular & Gratis-Probetraining Banner",
+    ],
+    tags: ["Next.js", "Tailwind CSS", "shadcn/ui"],
+    status: "live",
+    accent: "#f97316",
+    glow: "rgba(249,115,22,0.22)",
+    border: "rgba(249,115,22,0.18)",
+    href: "https://fitness-studio-9sbzarbm7-kevingoetzsysteminjur-dels-projects.vercel.app/",
+    demoLabel: "Live Demo",
+  },
+  {
     title: "Fullstack-App",
     description:
       "Eine CRUD-Anwendung mit Datenbankanbindung. In Planung – hier lerne ich PostgreSQL und API-Routes in Next.js kennen.",
