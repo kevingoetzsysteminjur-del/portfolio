@@ -34,3 +34,4 @@
 5. Containerisierung mit Docker
 6. UI/UX mit Tailwind & shadcn/ui
 7. Portfolio aufbauen als Beweis der Fähigkeiten
+npm install -g @anthropic-ai/claude-code
