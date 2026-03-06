@@ -46,7 +46,7 @@ const projects = [
     accent: "#f97316",
     glow: "rgba(249,115,22,0.22)",
     border: "rgba(249,115,22,0.18)",
-    href: "https://fitness-studio-9sbzarbm7-kevingoetzsysteminjur-dels-projects.vercel.app/",
+    href: "https://fitness-studio-kevingoetzsysteminjur-del.vercel.app",
     demoLabel: "Live Demo",
   },
   {
