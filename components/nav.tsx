@@ -17,15 +17,19 @@ export default function Nav() {
           boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
         }}
       >
-        <NavLink href="/" active={pathname === "/"}>
-          Home
-        </NavLink>
-        <NavLink href="/projekte" active={pathname === "/projekte"}>
-          Projekte
-        </NavLink>
-        <NavLink href="/kontakt" active={pathname === "/kontakt"}>
-          Kontakt
-        </NavLink>
+        {/* Logo */}
+        <span
+          className="px-3 py-1.5 text-xs font-bold tracking-wider mr-1"
+          style={{ color: "rgba(167,139,250,0.7)" }}
+        >
+          CF
+        </span>
+
+        <NavLink href="/" active={pathname === "/"}>Home</NavLink>
+        <NavLink href="/#leistungen" active={false}>Leistungen</NavLink>
+        <NavLink href="/#preise" active={false}>Preise</NavLink>
+        <NavLink href="/projekte" active={pathname === "/projekte"}>Projekte</NavLink>
+        <NavLink href="/kontakt" active={pathname === "/kontakt"}>Kontakt</NavLink>
       </div>
     </nav>
   );
@@ -47,8 +51,7 @@ function NavLink({
       style={
         active
           ? {
-              background:
-                "linear-gradient(135deg, rgba(139,92,246,0.5) 0%, rgba(6,182,212,0.5) 100%)",
+              background: "linear-gradient(135deg, rgba(139,92,246,0.5) 0%, rgba(6,182,212,0.5) 100%)",
               color: "#fff",
               boxShadow: "0 0 16px rgba(139,92,246,0.3)",
             }

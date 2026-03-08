@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /* ── Daten ── */
-const WORDS = ["Context Engineer", "Fullstack Entwickler", "Lernender"];
+const WORDS = ["Context Engineer", "Website-Entwickler", "AI-Integrator"];
 
 const PARTICLE_COLORS = [
   "#a78bfa", "#22d3ee", "#34d399",
@@ -18,11 +18,89 @@ const techStack = [
   { name: "Docker",       description: "Containerisierung & Deployment",       icon: "⬡", accent: "#38bdf8", glow: "rgba(14,165,233,0.4)"   },
 ];
 
+const leistungen = [
+  {
+    icon: "◈",
+    title: "Website-Entwicklung",
+    description: "Moderne, schnelle Websites mit Next.js und Tailwind CSS. Maßgeschneidert für dein Business – von der Landingpage bis zur komplexen Webanwendung.",
+    accent: "#22d3ee",
+    glow: "rgba(6,182,212,0.35)",
+    punkte: ["Next.js & React", "Responsive Design", "SEO-optimiert", "Schnelle Ladezeiten"],
+  },
+  {
+    icon: "◉",
+    title: "Context Engineering",
+    description: "Ich designe präzise Prompts und System-Kontexte für AI-Anwendungen. Damit deine KI nicht halluziniert, sondern liefert.",
+    accent: "#a78bfa",
+    glow: "rgba(139,92,246,0.35)",
+    punkte: ["System Prompt Design", "AI-Workflow-Optimierung", "Prompt-Testing", "Dokumentation"],
+  },
+  {
+    icon: "✦",
+    title: "AI-Integration",
+    description: "Claude, GPT und andere AI-Modelle direkt in deine Website oder App integrieren. Chatbots, Automationen und intelligente Features.",
+    accent: "#34d399",
+    glow: "rgba(52,211,153,0.35)",
+    punkte: ["Claude API", "Chatbot-Entwicklung", "Prozessautomatisierung", "AI-Beratung"],
+  },
+];
+
+const preise = [
+  {
+    name: "Landingpage",
+    preis: "ab 500 €",
+    sub: "Einmalige Zahlung",
+    accent: "#22d3ee",
+    glow: "rgba(6,182,212,0.25)",
+    border: "rgba(6,182,212,0.2)",
+    highlight: false,
+    leistungen: [
+      "1 Seite (Landingpage)",
+      "Responsives Design",
+      "Kontaktformular",
+      "SEO-Grundlagen",
+      "Lieferung in 7 Tagen",
+    ],
+  },
+  {
+    name: "Business Website",
+    preis: "ab 1.000 €",
+    sub: "Einmalige Zahlung",
+    accent: "#a78bfa",
+    glow: "rgba(139,92,246,0.3)",
+    border: "rgba(139,92,246,0.35)",
+    highlight: true,
+    leistungen: [
+      "Bis zu 5 Unterseiten",
+      "Individuelles Design",
+      "Animationen & Effekte",
+      "Performance-Optimierung",
+      "Lieferung in 14 Tagen",
+    ],
+  },
+  {
+    name: "Premium Website",
+    preis: "ab 2.000 €",
+    sub: "Einmalige Zahlung",
+    accent: "#34d399",
+    glow: "rgba(52,211,153,0.25)",
+    border: "rgba(52,211,153,0.2)",
+    highlight: false,
+    leistungen: [
+      "Unbegrenzte Seiten",
+      "AI-Integration möglich",
+      "CMS / Datenbank",
+      "Persönlicher Support",
+      "Individuelle Vereinbarung",
+    ],
+  },
+];
+
 const roadmap = [
   { title: "Grundlagen der Webentwicklung", description: "HTML, CSS, JavaScript – die Basis für alles.",               status: "done"    },
   { title: "Next.js & React lernen",         description: "Komponenten, Routing, App Router.",                          status: "done"    },
-  { title: "Erstes Portfolio-Projekt",       description: "Diese Seite – als lebendiger Beweis des Lernfortschritts.", status: "active"  },
-  { title: "Fullstack-App mit Datenbank",    description: "PostgreSQL, CRUD-Operationen, API-Routes.",                  status: "planned" },
+  { title: "Erste Kundenprojekte",           description: "Plan A Immobilien – Live-Website für echten Kunden.",        status: "done"    },
+  { title: "Fullstack-App mit Datenbank",    description: "PostgreSQL, CRUD-Operationen, API-Routes.",                  status: "active"  },
   { title: "Context Engineering vertiefen",  description: "System Prompts, Prompt Design, eigene AI-Workflows.",        status: "planned" },
   { title: "Deployment mit Docker",          description: "App containerisieren, Server-Deployment, CI/CD.",            status: "planned" },
 ] as const;
@@ -67,7 +145,7 @@ export default function Home() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  /* Partikel nur auf dem Client generieren (verhindert Hydration-Fehler) */
+  /* Partikel nur auf dem Client generieren */
   useEffect(() => {
     setParticles(
       Array.from({ length: 38 }, (_, i) => ({
@@ -85,7 +163,7 @@ export default function Home() {
 
   return (
     <main
-      className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-24"
+      className="relative min-h-screen overflow-hidden flex flex-col items-center px-6 py-24"
       style={{ background: "#030309" }}
     >
       {/* ── Floating Particles ── */}
@@ -119,10 +197,8 @@ export default function Home() {
           style={{ background: "radial-gradient(circle, rgba(16,185,129,0.6) 0%, rgba(5,150,105,0.2) 45%, transparent 100%)", filter: "blur(72px)" }} />
         <div className="wind-orb-4 absolute top-[35%] left-[25%] w-[550px] h-[550px] rounded-full"
           style={{ background: "radial-gradient(circle, rgba(236,72,153,0.45) 0%, rgba(168,85,247,0.16) 50%, transparent 100%)", filter: "blur(62px)" }} />
-        {/* Extra: Orange rechts unten */}
         <div className="wind-orb-2 absolute bottom-[5%] right-[-5%] w-[500px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(circle, rgba(251,146,60,0.4) 0%, transparent 70%)", filter: "blur(70px)", animationDelay: "-9s" }} />
-        {/* Extra: Gelb oben Mitte */}
         <div className="wind-orb-3 absolute top-[5%] left-[35%] w-[420px] h-[420px] rounded-full"
           style={{ background: "radial-gradient(circle, rgba(250,204,21,0.28) 0%, transparent 70%)", filter: "blur(60px)", animationDelay: "-15s" }} />
       </div>
@@ -130,18 +206,17 @@ export default function Home() {
       {/* ── Hero ── */}
       <div className="relative z-10 max-w-2xl w-full flex flex-col items-center gap-7 text-center">
 
-        {/* Status Badge */}
+        {/* Contexflow AI Badge */}
         <div
-          className="fade-up-1 flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold"
-          style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.3)", color: "#6ee7b7" }}
+          className="fade-up-1 flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider"
+          style={{ background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.3)", color: "#c4b5fd" }}
         >
-          <span className="blink w-2 h-2 rounded-full inline-block" style={{ background: "#34d399", boxShadow: "0 0 8px #34d399" }} />
-          Verfügbar für Projekte
+          <span style={{ color: "#a78bfa", fontSize: "10px" }}>✦</span>
+          CONTEXFLOW AI
         </div>
 
         {/* Avatar mit Spinning Rainbow Ring */}
         <div className="fade-up-2 float-anim" style={{ position: "relative", width: "112px", height: "112px" }}>
-          {/* Spinning Ring */}
           <div
             className="spin-ring absolute rounded-full"
             style={{
@@ -149,19 +224,17 @@ export default function Home() {
               background: "conic-gradient(from 0deg, #7c3aed, #06b6d4, #10b981, #ec4899, #f97316, #facc15, #7c3aed)",
             }}
           />
-          {/* Dunkle Lücke */}
           <div className="absolute rounded-full" style={{ inset: "2px", background: "#030309", zIndex: 1 }} />
-          {/* Avatar */}
           <img
             src="/watermarked-887996bc-6304-400d-8ae5-3b8a1133692f.jpg"
-            alt="Kevin Götz"
+            alt="Kevin Götz – Contexflow AI"
             onClick={() => setLightbox(true)}
             className="absolute rounded-full object-cover cursor-zoom-in"
             style={{ inset: "6px", zIndex: 2, width: "calc(100% - 12px)", height: "calc(100% - 12px)" }}
           />
         </div>
 
-        {/* Name */}
+        {/* Name + Verfuegbar-Badge */}
         <div className="fade-up-3 flex flex-col gap-3">
           <h1
             className="text-6xl font-bold tracking-tight"
@@ -175,9 +248,19 @@ export default function Home() {
             Kevin Götz
           </h1>
 
+          {/* Status Badge */}
+          <div className="flex justify-center">
+            <div
+              className="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold"
+              style={{ background: "rgba(16,185,129,0.12)", border: "1px solid rgba(16,185,129,0.3)", color: "#6ee7b7" }}
+            >
+              <span className="blink w-2 h-2 rounded-full inline-block" style={{ background: "#34d399", boxShadow: "0 0 8px #34d399" }} />
+              Verfügbar für neue Projekte · Mosbach
+            </div>
+          </div>
+
           {/* Typewriter */}
           <p className="text-xl font-medium" style={{ color: "rgba(203,213,225,0.9)", minHeight: "2rem" }}>
-            Angehender{" "}
             <span
               style={{
                 background: "linear-gradient(90deg, #a78bfa, #22d3ee, #34d399)",
@@ -195,11 +278,155 @@ export default function Home() {
 
         {/* Beschreibung */}
         <p className="fade-up-4 leading-relaxed max-w-lg" style={{ color: "rgba(148,163,184,0.85)" }}>
-          Ich lerne Fullstack-Entwicklung und Context Engineering von Grund auf.
-          Dieses Portfolio dokumentiert meinen Lernfortschritt – von den ersten
-          Zeilen Code bis zu echten Projekten.
+          Ich baue moderne Websites für kleine und mittelständische Unternehmen –
+          und integriere KI dort, wo sie echten Mehrwert schafft.
+          Aus Mosbach. Für ganz Deutschland.
         </p>
+
+        {/* CTA Buttons */}
+        <div className="fade-up-4 flex gap-3 flex-wrap justify-center">
+          <a
+            href="/kontakt"
+            className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all"
+            style={{
+              background: "linear-gradient(135deg, rgba(139,92,246,0.8), rgba(6,182,212,0.8))",
+              color: "#fff",
+              boxShadow: "0 0 24px rgba(139,92,246,0.3)",
+            }}
+          >
+            Projekt anfragen →
+          </a>
+          <a
+            href="/projekte"
+            className="px-6 py-2.5 rounded-full text-sm font-medium transition-all"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "rgba(203,213,225,0.85)",
+            }}
+          >
+            Projekte ansehen
+          </a>
+        </div>
       </div>
+
+      {/* ── Divider ── */}
+      <div className="animated-line relative z-10 w-full max-w-2xl my-16" />
+
+      {/* ── Leistungen ── */}
+      <section id="leistungen" className="relative z-10 max-w-2xl w-full flex flex-col gap-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-center" style={{ color: "rgba(100,116,139,0.75)" }}>
+          Leistungen
+        </p>
+        <div className="grid grid-cols-1 gap-4">
+          {leistungen.map((l) => (
+            <div
+              key={l.title}
+              className="tech-card rounded-2xl p-6 flex flex-col gap-4"
+              style={{
+                background: "rgba(255,255,255,0.03)",
+                border: `1px solid rgba(255,255,255,0.07)`,
+                borderLeft: `3px solid ${l.accent}`,
+                backdropFilter: "blur(12px)",
+                "--glow-color": l.glow,
+              } as React.CSSProperties}
+            >
+              <div className="flex items-start gap-4">
+                <span className="text-2xl mt-0.5 shrink-0" style={{ color: l.accent, filter: `drop-shadow(0 0 8px ${l.accent})` }}>
+                  {l.icon}
+                </span>
+                <div className="flex flex-col gap-2 flex-1">
+                  <h3 className="text-white font-semibold text-base">{l.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(148,163,184,0.7)" }}>
+                    {l.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {l.punkte.map((p) => (
+                      <span
+                        key={p}
+                        className="text-xs px-2.5 py-1 rounded-full"
+                        style={{
+                          background: "rgba(255,255,255,0.04)",
+                          border: `1px solid rgba(255,255,255,0.08)`,
+                          color: l.accent,
+                        }}
+                      >
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Divider ── */}
+      <div className="animated-line relative z-10 w-full max-w-2xl my-16" />
+
+      {/* ── Preise ── */}
+      <section id="preise" className="relative z-10 max-w-2xl w-full flex flex-col gap-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-center" style={{ color: "rgba(100,116,139,0.75)" }}>
+          Preise
+        </p>
+        <p className="text-center text-sm" style={{ color: "rgba(148,163,184,0.6)" }}>
+          Faire Preise. Kein Stundensatz-Chaos. Einmalige Zahlung, fertige Website.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {preise.map((p) => (
+            <div
+              key={p.name}
+              className="tech-card rounded-2xl p-6 flex flex-col gap-4 relative"
+              style={{
+                background: p.highlight ? "rgba(139,92,246,0.08)" : "rgba(255,255,255,0.03)",
+                border: `1px solid ${p.border}`,
+                backdropFilter: "blur(12px)",
+                "--glow-color": p.glow,
+              } as React.CSSProperties}
+            >
+              {p.highlight && (
+                <div
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 rounded-full"
+                  style={{ background: "rgba(139,92,246,0.9)", color: "#fff" }}
+                >
+                  Beliebt
+                </div>
+              )}
+              <div className="flex flex-col gap-1">
+                <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: p.accent }}>
+                  {p.name}
+                </p>
+                <p className="text-3xl font-bold text-white">{p.preis}</p>
+                <p className="text-xs" style={{ color: "rgba(100,116,139,0.7)" }}>{p.sub}</p>
+              </div>
+              <div className="w-full h-px" style={{ background: `linear-gradient(90deg, ${p.accent}40, transparent)` }} />
+              <ul className="flex flex-col gap-2">
+                {p.leistungen.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-xs" style={{ color: "rgba(148,163,184,0.75)" }}>
+                    <span style={{ color: p.accent }} className="shrink-0 mt-0.5">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="/kontakt"
+                className="mt-auto text-center text-xs font-semibold py-2 rounded-full transition-all"
+                style={{
+                  background: p.highlight ? "rgba(139,92,246,0.3)" : "rgba(255,255,255,0.05)",
+                  border: `1px solid ${p.border}`,
+                  color: p.accent,
+                }}
+              >
+                Anfragen →
+              </a>
+            </div>
+          ))}
+        </div>
+        <p className="text-center text-xs" style={{ color: "rgba(100,116,139,0.5)" }}>
+          Alle Preise zzgl. MwSt. · Individuelle Projekte auf Anfrage
+        </p>
+      </section>
 
       {/* ── Divider ── */}
       <div className="animated-line relative z-10 w-full max-w-2xl my-16" />
@@ -243,7 +470,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Divider 2 ── */}
+      {/* ── Divider ── */}
       <div className="animated-line relative z-10 w-full max-w-2xl my-16" />
 
       {/* ── Roadmap ── */}
@@ -265,7 +492,6 @@ export default function Home() {
                 }`,
               }}
             >
-              {/* Dot + Linie */}
               <div className="mt-0.5 flex-shrink-0 flex flex-col items-center gap-1">
                 <div
                   className={`w-3 h-3 rounded-full ${item.status === "active" ? "blink" : ""}`}
@@ -284,8 +510,6 @@ export default function Home() {
                   <div className="w-px h-6" style={{ background: "rgba(255,255,255,0.07)" }} />
                 )}
               </div>
-
-              {/* Text */}
               <div className="flex flex-col gap-1 pb-1">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-sm font-semibold text-white">{item.title}</span>
@@ -314,7 +538,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Divider 3 ── */}
+      {/* ── Divider ── */}
       <div className="animated-line relative z-10 w-full max-w-2xl my-16" />
 
       {/* ── Bio ── */}
@@ -323,7 +547,6 @@ export default function Home() {
           Über mich
         </p>
 
-        {/* Zitat-Block */}
         <div
           className="rounded-2xl p-6"
           style={{
@@ -333,32 +556,28 @@ export default function Home() {
           }}
         >
           <p className="text-lg font-semibold leading-relaxed" style={{ color: "#c4b5fd" }}>
-            "Ich bin nicht hier, um mitzumachen – ich bin hier, um den Standard neu zu setzen."
+            "Ich baue nicht nur Websites – ich baue digitale Präsenzen, die Kunden gewinnen."
           </p>
         </div>
 
-        {/* Fließtext */}
         <div className="flex flex-col gap-4 text-sm leading-relaxed" style={{ color: "rgba(148,163,184,0.85)" }}>
           <p>
-            Ich bin <span className="text-white font-semibold">Kevin Götz, 22 Jahre alt</span> – und ich gehöre zu einer Generation, die nicht darauf wartet, dass ihr eine Chance gegeben wird. Wir schaffen sie uns selbst.
+            Ich bin <span className="text-white font-semibold">Kevin Götz, 22 Jahre alt</span> aus Mosbach – Gründer von{" "}
+            <span style={{ color: "#a78bfa", fontWeight: 600 }}>Contexflow AI</span>. Ich helfe kleinen und mittelständischen Unternehmen dabei, professionell im Netz aufzutreten.
           </p>
           <p>
-            In einer Zeit, in der <span style={{ color: "#22d3ee", fontWeight: 600 }}>Künstliche Intelligenz</span> und digitale Systeme die Welt neu ordnen, sehe ich keine Bedrohung – ich sehe eine Bühne. Als angehender Context Engineer lerne ich nicht nur, wie man Technologie benutzt, sondern wie man sie <span style={{ color: "#a78bfa", fontWeight: 600 }}>denkt, formt und mit Bedeutung füllt</span>.
+            In einer Zeit, in der <span style={{ color: "#22d3ee", fontWeight: 600 }}>Künstliche Intelligenz</span> und digitale Systeme die Welt neu ordnen, sehe ich keine Bedrohung – ich sehe eine Bühne. Als Context Engineer weiß ich nicht nur, wie man Technologie benutzt, sondern wie man sie <span style={{ color: "#a78bfa", fontWeight: 600 }}>denkt, formt und mit Bedeutung füllt</span>.
           </p>
           <p>
-            Mein Ziel ist es, zu den Menschen zu gehören, die den Markt von morgen <span className="text-white font-semibold">professionell und mit Substanz prägen</span> – nicht mit Lärm, sondern mit echter Kompetenz. Jede Zeile Code, jeder Prompt, jedes Projekt ist ein Schritt näher an diesem Anspruch.
-          </p>
-          <p style={{ color: "rgba(148,163,184,0.6)" }}>
-            Dieses Portfolio ist kein fertiges Produkt – es ist ein lebendiger Beweis, dass ich auf dem Weg bin. Offen, hungrig und bereit.
+            Mein Ziel: Jedes Kundenprojekt besser zu machen als das letzte – mit echter Qualität, modernem Design und Technologie, die wirklich hilft.
           </p>
         </div>
 
-        {/* Stats */}
         <div className="grid grid-cols-3 gap-4">
           {[
-            { value: "22",    label: "Jahre alt"         },
-            { value: "100%",  label: "Lernbereitschaft"  },
-            { value: "∞",     label: "Motivation"        },
+            { value: "1",     label: "Kunde (Live)"        },
+            { value: "3",     label: "Projekte gebaut"     },
+            { value: "100%",  label: "Lernbereitschaft"    },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -389,7 +608,6 @@ export default function Home() {
           className="fixed inset-0 z-50 flex items-center justify-center cursor-zoom-out"
           style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)", animation: "fade-up 0.2s ease both" }}
         >
-          {/* Schließen-Button */}
           <button
             onClick={() => setLightbox(false)}
             className="absolute top-5 right-6 text-2xl font-light"
@@ -397,11 +615,9 @@ export default function Home() {
           >
             ✕
           </button>
-
-          {/* Bild */}
           <img
             src="/watermarked-887996bc-6304-400d-8ae5-3b8a1133692f.jpg"
-            alt="Kevin Götz"
+            alt="Kevin Götz – Contexflow AI"
             onClick={(e) => e.stopPropagation()}
             className="rounded-2xl object-cover cursor-default"
             style={{
@@ -412,8 +628,6 @@ export default function Home() {
               animation: "fade-up 0.25s cubic-bezier(0.22,1,0.36,1) both",
             }}
           />
-
-          {/* Hint */}
           <p className="absolute bottom-6 text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
             Klick oder ESC zum Schließen
           </p>
@@ -421,8 +635,14 @@ export default function Home() {
       )}
 
       {/* ── Footer ── */}
-      <footer className="relative z-10 mt-24 text-xs" style={{ color: "rgba(71,85,105,0.65)" }}>
-        Gebaut mit Next.js & Tailwind CSS
+      <footer className="relative z-10 mt-24 flex flex-col items-center gap-2">
+        <p className="text-xs font-semibold" style={{ color: "rgba(139,92,246,0.6)" }}>CONTEXFLOW AI</p>
+        <p className="text-xs" style={{ color: "rgba(71,85,105,0.65)" }}>
+          Kevin Götz · Context Engineer · Mosbach · kevin.goetz.systeminjur@gmail.com
+        </p>
+        <p className="text-xs" style={{ color: "rgba(71,85,105,0.4)" }}>
+          Gebaut mit Next.js & Tailwind CSS
+        </p>
       </footer>
     </main>
   );
