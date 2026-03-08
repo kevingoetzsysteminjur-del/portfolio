@@ -387,7 +387,7 @@ export default function Home() {
             >
               {p.highlight && (
                 <div
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 rounded-full"
+                  className="absolute -top-1 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 rounded-full"
                   style={{ background: "rgba(139,92,246,0.9)", color: "#fff" }}
                 >
                   Beliebt
